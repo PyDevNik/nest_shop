@@ -1,0 +1,106 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Seller {
+  id: Int!
+  name: String!
+  surname: String!
+  email: String!
+  goods: [Good!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Good {
+  id: Int!
+  name: String!
+  description: String
+  price: Float!
+  sellerId: Int!
+  seller: Seller!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Buyer {
+  id: Int!
+  name: String!
+  surname: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  goods: [Good!]!
+  good(id: Int!): Good!
+  sellers: [Seller!]!
+  seller(id: Int!): Seller!
+  buyers: [Buyer!]!
+  buyer(id: Int!): Buyer!
+}
+
+type Mutation {
+  createGood(createGoodInput: CreateGoodInput!): Good!
+  updateGood(updateGoodInput: UpdateGoodInput!): Good!
+  removeGood(id: Int!): Good!
+  createSeller(createSellerInput: CreateSellerInput!): Seller!
+  updateSeller(updateSellerInput: UpdateSellerInput!): Seller!
+  removeSeller(id: Int!): Seller!
+  createBuyer(createBuyerInput: CreateBuyerInput!): Buyer!
+  updateBuyer(updateBuyerInput: UpdateBuyerInput!): Buyer!
+  removeBuyer(id: Int!): Buyer!
+}
+
+input CreateGoodInput {
+  name: String!
+  description: String
+  price: Float!
+}
+
+input UpdateGoodInput {
+  name: String
+  description: String
+  price: Float
+  id: Int!
+}
+
+input CreateSellerInput {
+  name: String!
+  surname: String!
+  email: String!
+  password: String!
+}
+
+input UpdateSellerInput {
+  name: String
+  surname: String
+  email: String
+  password: String
+  id: Float!
+}
+
+input CreateBuyerInput {
+  name: String!
+  surname: String!
+  email: String!
+  password: String!
+}
+
+input UpdateBuyerInput {
+  name: String
+  surname: String
+  email: String
+  password: String
+  id: Float!
+}
+
+type Subscription {
+  goodAdded: Good!
+}
